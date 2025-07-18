@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Diet Plan - Healthy Eating Made Simple</title>
+  <style>
+    :root {
+      --primary: #2dce89;
+      --secondary: #325288;
+      --light-bg: #f4fbf7;
+      --border-radius: 14px;
+      --shadow: 0 4px 24px rgba(45, 206, 137, 0.09);
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--light-bg);
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: var(--secondary);
+      color: #fff;
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    header h1 {
+      margin: 0.4rem 0 0.2rem 0;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+    header p {
+      margin: 0;
+      opacity: 0.94;
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .hero-img-container {
+      margin-top: -40px;
+      text-align: center;
+    }
+    .hero-img-container img {
+      width: 90%;
+      max-width: 900px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2.2rem 0 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 0.7em 1.5em;
+      background: #e4f9ef;
+      border-radius: 25px;
+      transition: background 0.18s, color 0.18s;
+    }
+    nav a:hover,
+    nav a.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    main {
+      max-width: 900px;
+      background: #fff;
+      margin: 0 auto 2.5rem auto;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.5rem 1.2rem 2rem 1.2rem;
+    }
+
+    section {
+      margin-bottom: 2.8rem;
+    }
+    section:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2rem;
+      margin-top: 0;
+      margin-bottom: 1em;
+    }
+
+    .plan-list {
+      display: grid;
+      gap: 2.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width: 650px) {
+      .plan-list {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .plan-card {
+      background: #fafbfc;
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px rgba(50, 82, 136, 0.07);
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      min-height: 380px;
+    }
+    .plan-card .plan-img {
+      background: #e7ffe4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      overflow: hidden;
+    }
+    .plan-card .plan-img img {
+      height: 95%;
+      max-width: 90%;
+      border-radius: 0 0 12px 0;
+      object-fit: cover;
+      background: #f4fbf7;
+      box-shadow: 0 2px 10px rgba(45,206,137,0.06);
+    }
+    .plan-card .plan-content {
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .plan-card h3 {
+      margin: 0 0 0.7rem 0;
+      font-size: 1.4em;
+      color: var(--secondary);
+    }
+    .plan-card ul {
+      padding-left: 1.1em;
+      margin: 0.3em 0 0.7em 0;
+    }
+    .plan-card li {
+      margin-bottom: 0.35em;
+      font-size: 1em;
+    }
+    .plan-card .plan-label {
+      font-size: 0.85em;
+      font-weight: bold;
+      color: var(--primary);
+      margin-bottom: 0.6em;
+      display: inline-block;
+    }
+
+    .nutrition-tips {
+      display: grid;
+      gap: 0.9em;
+      grid-template-columns: 1fr;
+      margin-top: 1.6em;
+    }
+    @media(min-width: 700px) {
+      .nutrition-tips {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+    .tip-card {
+      background: #e6fbe9;
+      border-radius: 8px;
+      padding: 1.1em 1em;
+      font-size: 1em;
+      color: #295271;
+      position: relative;
+    }
+    .tip-card:before {
+      content: "✔";
+      color: var(--primary);
+      font-size: 1.1em;
+      position: absolute;
+      left: 12px;
+      top: 10px;
+      opacity: 0.4;
+    }
+
+    footer {
+      background: var(--secondary);
+      color: #e3f9fd;
+      text-align: center;
+      padding: 1.3em 0 1.7em 0;
+      margin-top: 2.6em;
+      font-size: 1.02em;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+    }
+
+    /* Responsive tweaks */
+    @media(max-width:600px) {
+      header h1 { font-size: 1.57rem; }
+      nav a { padding: 0.55em 1.2em; }
+      .plan-card { min-height: 0; }
+      main { padding: 1.4rem 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Healthy Diet Plan</h1>
+    <p>Eat Smart, Live Well. Find your perfect meal plan!</p>
+  </header>
+  <div class="hero-img-container">
+    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f41af3e3-3187-4394-801d-2d9624a10d33.png" alt="Fresh colorful fruits and vegetables arranged on a rustic wooden table with a measuring tape and healthy grains." 
+         onerror="this.onerror=null;this.src='https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/746dfcdd-5c48-4822-8a05-444a4b504096.png';" />
+  </div>
+  <nav>
+    <a href="#plans" class="active">Diet Plans</a>
+    <a href="#tips">Nutrition Tips</a>
+    <a href="#about">About</a>
+  </nav>
+  <main>
+    <section id="plans">
+      <h2>Our Popular Diet Plans</h2>
+      <div class="plan-list">
+        <div class="plan-card">
+          <div class="plan-img">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/665e36ac-1b33-4823-a044-c0fb7adde1d7.png" alt="Balanced meal with grilled salmon, brown rice, and fresh greens beautifully plated." 
+                 onerror="this.onerror=null;this.style.display='none';" />
+          </div>
+          <div class="plan-content">
+            <span class="plan-label">Balanced Diet</span>
+            <h3>Classic Balanced Diet</h3>
+            <ul>
+              <li>Proteins: Lean meats, fish, eggs, legumes</li>
+              <li>Carbs: Brown rice, whole grains, sweet potatoes</li>
+              <li>Veggies & Fruits: Variety, including leafy greens</li>
+              <li>Healthy fats: Nuts, olive oil, avocados</li>
+            </ul>
+            <p>This plan provides all essential nutrients for energy and wellness, focusing on balance and moderation.</p>
+          </div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-img">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/319841a3-d98b-40a7-9cbe-7528caf0e7e2.png" alt="Colorful Mediterranean platter with grilled vegetables, chickpeas, feta cheese, whole grain bread, and olive oil drizzle."
+                 onerror="this.onerror=null;this.style.display='none';" />
+          </div>
+          <div class="plan-content">
+            <span class="plan-label">Mediterranean</span>
+            <h3>Mediterranean Plan</h3>
+            <ul>
+              <li>Lots of vegetables and fruits</li>
+              <li>Whole grains and legumes</li>
+              <li>Olive oil as main fat source</li>
+              <li>Fish & moderate dairy</li>
+              <li>Fresh herbs and minimal processed foods</li>
+            </ul>
+            <p>Inspired by traditional coastal diets for heart health and longevity.</p>
+          </div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-img">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7ca59f06-f355-49b8-bd80-97e653f24764.png" alt="Bowls of tofu, lentils, spinach, quinoa, and fruit forming a vibrant vegan meal." 
+                 onerror="this.onerror=null;this.style.display='none';" />
+          </div>
+          <div class="plan-content">
+            <span class="plan-label">Vegan</span>
+            <h3>Plant-Based Vegan</h3>
+            <ul>
+              <li>All plant-based: vegetables, fruits, grains, legumes</li>
+              <li>Focus on whole foods</li>
+              <li>Nuts, seeds, and plant protein sources</li>
+              <li>B12 fortified foods included</li>
+            </ul>
+            <p>For a compassionate, eco-friendly approach that supports overall health.</p>
+          </div>
+        </div>
+        <div class="plan-card">
+          <div class="plan-img">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/83f5a43d-9a9c-412f-b970-12d871cbb43a.png" alt="Breakfast plate with eggs, avocado, leafy salad and nuts, low on carbs, high in proteins and healthy fat." 
+                 onerror="this.onerror=null;this.style.display='none';" />
+          </div>
+          <div class="plan-content">
+            <span class="plan-label">Low-Carb</span>
+            <h3>Keto & Low-Carb</h3>
+            <ul>
+              <li>Non-starchy vegetables</li>
+              <li>High proteins and healthy fats</li>
+              <li>Minimal sugar and refined carb intake</li>
+              <li>Nuts, seeds, lean meats</li>
+            </ul>
+            <p>Effective for weight management and stable energy levels.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="tips">
+      <h2>Healthy Nutrition Tips</h2>
+      <div class="nutrition-tips">
+        <div class="tip-card">Stay hydrated: Aim for 6-8 glasses of water daily.</div>
+        <div class="tip-card">Fill half your plate with fruits and veggies in every meal.</div>
+        <div class="tip-card">Choose whole grains over refined grains for sustained energy.</div>
+        <div class="tip-card">Limit processed foods, added sugars, and salt intake.</div>
+        <div class="tip-card">Include healthy fats: nuts, seeds, olive oil, and avocados.</div>
+        <div class="tip-card">Control portions to avoid overeating; eat mindfully and slowly.</div>
+      </div>
+    </section>
+    <section id="about">
+      <h2>About Diet Plan</h2>
+      <p>
+        Diet Plan is dedicated to making healthy eating simple and accessible for everyone. 
+        Our diet plans are crafted based on nutrition science and culinary diversity, 
+        ensuring meals are both nourishing and delicious.
+      </p>
+      <p>
+        Whether your goal is weight loss, muscle gain, better energy, or just improving eating habits, 
+        you'll find the right plan here. Remember, consult a registered nutritionist for personalized advice!
+      </p>
+    </section>
+  </main>
+  <footer>
+    © 2024 Diet Plan | Created for your healthy lifestyle journey.<br/>
+    Designed by BlackboxAI
+  </footer>
+</body>
+</html>
+
